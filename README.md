@@ -5,3 +5,4 @@ I was just ordering something on yemeksepeti, but when I clicked the "place orde
 Anyways, I decided instead of refreshing the page every second, I can write a simple python script to do it for me. And it did! It did wonders!
 
 To run, simply edit the url, and run it on your favourite terminal.
+Only works if the restaurant is not accepting orders due to congestion. 
