@@ -5,11 +5,11 @@ import requests
 import time
 
 def screech():
-    sys.stdout.write('\a')
     if platform.system() == 'Linux':
         os.system("aplay -q kaspersky.wav")
     elif platform.system() == 'Windows':
-        os.system("start /min mplay32 /play /close karspersky.wav")
+        import winsound
+        winsound.PlaySound('kaspersky.wav',winsound.SND_ALIAS)
 
 # Edit the following URL to match your own favourite order place
 url = "https://www.yemeksepeti.com/cajun-corner-100-yil-ankara?status=closed"
