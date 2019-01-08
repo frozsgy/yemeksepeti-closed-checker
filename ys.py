@@ -11,8 +11,7 @@ def screech():
         import winsound
         winsound.PlaySound('kaspersky.wav',winsound.SND_ALIAS)
 
-# Edit the following URL to match your own favourite order place
-url = "https://www.yemeksepeti.com/cajun-corner-100-yil-ankara?status=closed"
+url = raw_input('Paste the URL of the restaurant: ')
 
 while True:
     r = requests.get(url)
