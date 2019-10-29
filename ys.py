@@ -11,14 +11,27 @@ def screech():
         import winsound
         winsound.PlaySound('kaspersky.wav',winsound.SND_ALIAS)
 
-url = raw_input('Paste the URL of the restaurant: ')
+def check(url):
+    while True:
+        r = requests.get(url)
+        page = r.content
+        if (page.find("beklemek istemiyor".encode()) + page.find("anda servis vermemektedir".encode())) > -2:
+            now = time.strftime("%H:%M:%S")
+            print(now + " - meh still closed :/")
+            time.sleep(1)
+        else :
+            print("IT'S OPEN NOW RUN RUN RUN")
+            screech()
+            break
 
-while True:
-    r = requests.get(url)
-    if (r.content).find("beklemek istemiyor") > -1:
-        print "meh still closed :/"
-        time.sleep(1)
+if __name__ == '__main__':
+    args = sys.argv
+    if len(args) > 1 :
+        url = args[1]
     else :
-        print "IT'S OPEN NOW RUN RUN RUN"
-        screech()
-        break
+        url = input('Paste the URL of the restaurant: ')
+    try:
+        check(url)
+    except KeyboardInterrupt:
+        print("Aight, imma check myself out!")
+        exit()
